@@ -78,7 +78,9 @@ Scaffold(
 
 ## 📸 Preview
 
-> Screenshots and GIFs will be added soon.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Ismail-Magdy/glass_bottom_nav_bar/master/screenshots/demo.gif" alt="Glass Bottom Navigation Bar Demo" width="350"/>
+</p>
 
 ---
 
