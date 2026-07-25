@@ -1,8 +1,8 @@
-name: glass_bottom_nav_bar
+name: glass_bottom_navigation_bar
 description: A beautiful and customizable glassmorphism bottom navigation bar for Flutter applications.
 version: 0.0.1
-repository: https://github.com/your_username/glass_bottom_nav_bar
-issue_tracker: https://github.com/your_username/glass_bottom_nav_bar/issues
+repository: https://github.com/Ismail-Magdy/glass_bottom_nav_bar
+issue_tracker: https://github.com/Ismail-Magdy/glass_bottom_nav_bar/issues
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -11,4 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_screenutil: ^5.9.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
