@@ -16,6 +16,7 @@ A Beautiful, Modern, and Highly Customizable **Glassmorphism** Bottom Navigation
 - Lightweight and easy to use
 - Drop-in replacement for Flutter's standard `BottomNavigationBar`
 - Works seamlessly with modern Flutter applications
+- Optional Haptic Feedback for premium user experience
 
 ---
 
@@ -25,7 +26,7 @@ Add the package to your `pubspec.yaml` :
 
 ```yaml
 dependencies:
-  glass_bottom_navigation_bar: ^0.0.3
+  glass_bottom_navigation_bar: ^0.0.4
 ```
 
 Then run :
@@ -51,6 +52,7 @@ Scaffold(
   extendBody: true, // Required to show the glass effect over the body
   bottomNavigationBar: GlassBottomNavigationBar(
     currentIndex: _currentIndex,
+    enableHapticFeedback: false, // Enable it if you want to have haptic feedback on icon taps
     onTap: (index) {
       setState(() {
         _currentIndex = index;

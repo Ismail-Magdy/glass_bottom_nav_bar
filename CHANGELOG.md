@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Added optional `enableHapticFeedback` property for smooth tactile feedback on tap and drag.
+
 ## 0.0.3
 
 - Minor text adjustments and refinements in README.md.

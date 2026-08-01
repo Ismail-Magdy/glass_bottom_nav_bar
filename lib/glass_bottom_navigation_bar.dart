@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class GlassBottomNavigationBar extends StatefulWidget {
   final int currentIndex;
@@ -12,6 +13,8 @@ class GlassBottomNavigationBar extends StatefulWidget {
   final EdgeInsets margin;
   final double innerPadding;
 
+  final bool enableHapticFeedback;
+
   const GlassBottomNavigationBar({
     super.key,
     required this.currentIndex,
@@ -22,6 +25,7 @@ class GlassBottomNavigationBar extends StatefulWidget {
     this.height = 70.0,
     this.margin = const EdgeInsets.symmetric(horizontal: 25, vertical: 30),
     this.innerPadding = 16.0,
+    this.enableHapticFeedback = false,
   }) : assert(items.length >= 2,
             "GlassBottomNavigationBar must have at least 2 items!");
 
@@ -117,6 +121,13 @@ class _GlassBottomNavigationBarState extends State<GlassBottomNavigationBar> {
                         final index = (normalizedDx / itemWidth)
                             .floor()
                             .clamp(0, widget.items.length - 1);
+
+                        // Make small Vibration when user taps on a different icon
+                        if (widget.enableHapticFeedback &&
+                            widget.currentIndex != index) {
+                          HapticFeedback.lightImpact();
+                        }
+
                         widget.onTap(index);
                       },
                       onHorizontalDragStart: (details) {
@@ -135,16 +146,28 @@ class _GlassBottomNavigationBarState extends State<GlassBottomNavigationBar> {
                         setState(() {
                           _dragX = details.localPosition.dx;
                           double normalizedDx = _dragX! - widget.innerPadding;
-                          _hoverIndex =
+                          int newHoverIndex =
                               (normalizedDx / itemWidth).floor().clamp(
                                     0,
                                     widget.items.length - 1,
                                   );
+
+                          // Make small Vibration when user hovers over a different icon
+                          if (widget.enableHapticFeedback &&
+                              _hoverIndex != newHoverIndex) {
+                            HapticFeedback.selectionClick();
+                          }
+
+                          _hoverIndex = newHoverIndex;
                         });
                       },
                       onHorizontalDragEnd: (details) {
                         if (_hoverIndex != null &&
                             _hoverIndex != widget.currentIndex) {
+                          // Make small Vibration when user releases the drag on a different icon
+                          if (widget.enableHapticFeedback) {
+                            HapticFeedback.lightImpact();
+                          }
                           widget.onTap(_hoverIndex!);
                         }
                         setState(() {
