@@ -25,7 +25,7 @@ Add the package to your `pubspec.yaml` :
 
 ```yaml
 dependencies:
-  glass_bottom_navigation_bar: ^0.0.1
+  glass_bottom_navigation_bar: ^0.0.3
 ```
 
 Then run :
